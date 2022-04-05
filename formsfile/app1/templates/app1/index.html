@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>practice</title>
+    <style>
+        .er{
+        color:red;
+        }
+    </style>
+</head>
+<body>
+<form action="" method="post" novalidate>
+    {% csrf_token %}
+<h3>User creation form</h3>
+
+{% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+        <p class="er">{{error}}</p>
+        {% endfor %}
+
+    {% endif %}
+    {% for fm in form %}
+     {{fm.label_tag}} {{fm}} {{fm.error|striptags}}<br><br>
+    {% endfor %}
+    <input type="submit" value="save">
+</form>
+<a href="{% url 'login' %}">Login</a>
+</body>
+</html>
